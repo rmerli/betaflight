@@ -183,6 +183,15 @@
 #define PARAM_NAME_HORIZON_IGNORE_STICKS "horizon_ignore_sticks"
 #define PARAM_NAME_HORIZON_DELAY_MS "horizon_delay_ms"
 
+#ifdef USE_WING
+#define PARAM_NAME_AUTOLAUNCH_MOTOR_DELAY_MS "autolaunch_motor_delay_ms"
+#define PARAM_NAME_AUTOLAUNCH_IDLE_THROTTLE "autolaunch_idle_throttle"
+#define PARAM_NAME_AUTOLAUNCH_LAUNCH_THROTTLE "autolaunch_launch_throttle"
+#define PARAM_NAME_AUTOLAUNCH_THRSD "autolaunch_thrsd"
+#define PARAM_NAME_AUTOLAUNCH_CLIMB_ANGLE "autolaunch_climb_angle"
+#define PARAM_NAME_AUTOLAUNCH_MAX_THROW_ANGLE "autolaunch_max_throw_angle"
+#endif // USE_WING
+//
 #ifdef USE_GPS
 #define PARAM_NAME_GPS_PROVIDER "gps_provider"
 #define PARAM_NAME_GPS_SBAS_MODE "gps_sbas_mode"

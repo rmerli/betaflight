@@ -1181,9 +1181,14 @@ const clivalue_t valueTable[] = {
     { "f_yaw",                      VAR_UINT16 | PROFILE_VALUE, .config.minmaxUnsigned = { 0, F_GAIN_MAX }, PG_PID_PROFILE, offsetof(pidProfile_t, pid[PID_YAW].F) },
 
 #ifdef USE_WING
-    { PARAM_NAME_S_PITCH,           VAR_UINT8  | PROFILE_VALUE, .config.minmaxUnsigned = { 0, PID_GAIN_MAX }, PG_PID_PROFILE, offsetof(pidProfile_t, pid[PID_PITCH].S) },
-    { PARAM_NAME_S_ROLL,            VAR_UINT8  | PROFILE_VALUE, .config.minmaxUnsigned = { 0, PID_GAIN_MAX }, PG_PID_PROFILE, offsetof(pidProfile_t, pid[PID_ROLL].S) },
-    { PARAM_NAME_S_YAW,             VAR_UINT8  | PROFILE_VALUE, .config.minmaxUnsigned = { 0, PID_GAIN_MAX }, PG_PID_PROFILE, offsetof(pidProfile_t, pid[PID_YAW].S) },
+    { PARAM_NAME_S_PITCH,                    VAR_UINT8  | PROFILE_VALUE, .config.minmaxUnsigned = { 0, PID_GAIN_MAX }, PG_PID_PROFILE, offsetof(pidProfile_t, pid[PID_PITCH].S) },
+    { PARAM_NAME_S_ROLL,                     VAR_UINT8  | PROFILE_VALUE, .config.minmaxUnsigned = { 0, PID_GAIN_MAX }, PG_PID_PROFILE, offsetof(pidProfile_t, pid[PID_ROLL].S) },
+    { PARAM_NAME_S_YAW,                      VAR_UINT8  | PROFILE_VALUE, .config.minmaxUnsigned = { 0, PID_GAIN_MAX }, PG_PID_PROFILE, offsetof(pidProfile_t, pid[PID_YAW].S) },
+    { PARAM_NAME_AUTOLAUNCH_MOTOR_DELAY_MS,  VAR_UINT16 | PROFILE_VALUE, .config.minmaxUnsigned = { 0, 500 }, PG_AUTOLAUNCH, offsetof(autolaunchConfig_t, motorDelay) },
+    { PARAM_NAME_AUTOLAUNCH_IDLE_THROTTLE,   VAR_UINT16 | PROFILE_VALUE, .config.minmaxUnsigned = { PWM_RANGE_MIN, PWM_RANGE_MAX }, PG_AUTOLAUNCH, offsetof(autolaunchConfig_t, idleThrottle) },
+    { PARAM_NAME_AUTOLAUNCH_LAUNCH_THROTTLE, VAR_UINT16 | PROFILE_VALUE, .config.minmaxUnsigned = { PWM_RANGE_MIN, PWM_RANGE_MAX }, PG_AUTOLAUNCH, offsetof(autolaunchConfig_t, launchThrottle) },
+    { PARAM_NAME_AUTOLAUNCH_CLIMB_ANGLE,     VAR_UINT8 | PROFILE_VALUE, .config.minmaxUnsigned = { 0, 90 }, PG_AUTOLAUNCH, offsetof(autolaunchConfig_t, climbAngle) },
+    { PARAM_NAME_AUTOLAUNCH_MAX_THROW_ANGLE, VAR_UINT8 | PROFILE_VALUE, .config.minmaxUnsigned = { 0, 360 }, PG_AUTOLAUNCH, offsetof(autolaunchConfig_t, maxThrowAngle) },
 #endif // USE_WING
 
     { PARAM_NAME_ANGLE_P_GAIN,          VAR_UINT8  | PROFILE_VALUE, .config.minmaxUnsigned = { 0, 200 }, PG_PID_PROFILE, offsetof(pidProfile_t, pid[PID_LEVEL].P) },
