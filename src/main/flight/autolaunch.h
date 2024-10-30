@@ -15,27 +15,12 @@
  * along with Betaflight. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <stdint.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <math.h>
+#pragma once
 
-#include "platform.h"
-#include "build/debug.h"
-#include "common/maths.h"
+#include "pg/autolaunch.h"
+#include "common/axis.h"
 
-#include "flight/imu.h"
-#include "rx/rx.h"
-#include "autolaunch.h"
+void autolaunchInit(const autolaunchConfig_t *config);
 
-static float throttleOut = 0.0f;
-
-void autolaunchInit(const autolaunchConfig_t *config)
-{
-    throttleOut = config->timeout;
-}
-
-float getAutolaunchThrottle(void)
-{
-    return throttleOut;
-}
+float getAutolaunchThrottle(void);
+extern float autolaunchAngle[ANGLE_INDEX_COUNT]; // NOTE: ANGLES ARE IN CENTIDEGREES

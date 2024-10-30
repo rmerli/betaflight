@@ -2,6 +2,7 @@ PG_SRC = \
             pg/adc.c \
             pg/alt_hold.c \
             pg/autopilot.c \
+            pg/autolaunch.c \
             pg/beeper.c \
             pg/beeper_dev.c \
             pg/board.c \
@@ -159,6 +160,7 @@ COMMON_SRC = \
             fc/rc_modes.c \
             flight/alt_hold.c \
             flight/autopilot.c \
+            flight/autolaunch.c \
             flight/dyn_notch_filter.c \
             flight/failsafe.c \
             flight/gps_rescue.c \

@@ -34,6 +34,7 @@ PG_RESET_TEMPLATE(autolaunchConfig_t, autolaunchConfig,
     .launchThrottle = 1000,
     .climbAngle = 25, 
     .maxThrowAngle = 180
+    .timeout = 5000
 );
 
 #endif /* ifdef USE_WING */

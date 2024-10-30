@@ -31,6 +31,7 @@ typedef struct autolaunch_s {
     uint16_t launchThrottle; // rcControl
     uint8_t climbAngle; // angle
     uint8_t  maxThrowAngle;
+    uint16_t  timeout;
 } autolaunchConfig_t;
 
 PG_DECLARE(autolaunchConfig_t, autolaunchConfig);

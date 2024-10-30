@@ -190,6 +190,7 @@
 #define PARAM_NAME_AUTOLAUNCH_THRSD "autolaunch_thrsd"
 #define PARAM_NAME_AUTOLAUNCH_CLIMB_ANGLE "autolaunch_climb_angle"
 #define PARAM_NAME_AUTOLAUNCH_MAX_THROW_ANGLE "autolaunch_max_throw_angle"
+#define PARAM_NAME_AUTOLAUNCH_MAX_TIMEOUT "autolaunch_timeout"
 #endif // USE_WING
 //
 #ifdef USE_GPS
