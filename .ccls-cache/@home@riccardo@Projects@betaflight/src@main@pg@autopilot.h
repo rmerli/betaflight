@@ -18,23 +18,22 @@
  * If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "autolaunch.h"
-#include "platform.h"
+#pragma once
 
-#include "pg/pg_ids.h"
+#include <stdint.h>
 
-#include "autolaunch.h"
- 
-#ifdef USE_WING
-PG_REGISTER_WITH_RESET_TEMPLATE(autolaunchConfig_t, autolaunchConfig, PG_AUTOLAUNCH, 1);
+#include "pg/pg.h"
 
-PG_RESET_TEMPLATE(autolaunchConfig_t, autolaunchConfig,
-    .motorDelay = 100,
-    .idleThrottle = 1000,
-    .launchThrottle = 1000,
-    .climbAngle = 25, 
-    .maxThrowAngle = 180,
-    .timeout = 5000
-);
+typedef struct autopilotConfig_s {
+    uint8_t landing_altitude_m;   // altitude below which landing behaviours can change, metres
+    uint16_t hover_throttle;      // value used at the start of a rescue or position hold
+    uint16_t throttle_min;
+    uint16_t throttle_max;
+    uint8_t altitude_P;
+    uint8_t altitude_I;
+    uint8_t altitude_D;
+    uint8_t altitude_F;
+} autopilotConfig_t;
 
-#endif /* ifdef USE_WING */
+PG_DECLARE(autopilotConfig_t, autopilotConfig);
+

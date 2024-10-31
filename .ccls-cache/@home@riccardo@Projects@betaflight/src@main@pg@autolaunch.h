@@ -18,23 +18,20 @@
  * If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "autolaunch.h"
-#include "platform.h"
+#pragma once
 
-#include "pg/pg_ids.h"
+#include <stdint.h>
 
-#include "autolaunch.h"
- 
-#ifdef USE_WING
-PG_REGISTER_WITH_RESET_TEMPLATE(autolaunchConfig_t, autolaunchConfig, PG_AUTOLAUNCH, 1);
+#include "pg/pg.h"
 
-PG_RESET_TEMPLATE(autolaunchConfig_t, autolaunchConfig,
-    .motorDelay = 100,
-    .idleThrottle = 1000,
-    .launchThrottle = 1000,
-    .climbAngle = 25, 
-    .maxThrowAngle = 180,
-    .timeout = 5000
-);
+typedef struct autolaunch_s {
 
-#endif /* ifdef USE_WING */
+    uint16_t motorDelay; // ms
+    uint16_t idleThrottle; // rcControl
+    uint16_t launchThrottle; // rcControl
+    uint8_t climbAngle; // angle
+    uint8_t  maxThrowAngle;
+    uint16_t  timeout;
+} autolaunchConfig_t;
+
+PG_DECLARE(autolaunchConfig_t, autolaunchConfig);

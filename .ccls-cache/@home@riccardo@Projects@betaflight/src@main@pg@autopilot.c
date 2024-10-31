@@ -18,23 +18,24 @@
  * If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "autolaunch.h"
 #include "platform.h"
 
+#include "flight/autopilot.h"
+
+#include "pg/pg.h"
 #include "pg/pg_ids.h"
 
-#include "autolaunch.h"
- 
-#ifdef USE_WING
-PG_REGISTER_WITH_RESET_TEMPLATE(autolaunchConfig_t, autolaunchConfig, PG_AUTOLAUNCH, 1);
+#include "autopilot.h"
 
-PG_RESET_TEMPLATE(autolaunchConfig_t, autolaunchConfig,
-    .motorDelay = 100,
-    .idleThrottle = 1000,
-    .launchThrottle = 1000,
-    .climbAngle = 25, 
-    .maxThrowAngle = 180,
-    .timeout = 5000
+PG_REGISTER_WITH_RESET_TEMPLATE(autopilotConfig_t, autopilotConfig, PG_AUTOPILOT, 1);
+
+PG_RESET_TEMPLATE(autopilotConfig_t, autopilotConfig,
+    .landing_altitude_m = 4,
+    .hover_throttle = 1275,
+    .throttle_min = 1100,
+    .throttle_max = 1700,
+    .altitude_P = 15,
+    .altitude_I = 15,
+    .altitude_D = 15,
+    .altitude_F = 15,
 );
-
-#endif /* ifdef USE_WING */

@@ -15,30 +15,16 @@
  * along with Betaflight. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <stdint.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <math.h>
+#pragma once
 
-#include "platform.h"
-#include "build/debug.h"
-#include "common/maths.h"
+#include "pg/autopilot.h"
+#include "flight/pid.h"
 
-#include "flight/imu.h"
-#include "rx/rx.h"
-#include "autolaunch.h"
+void autopilotInit(const autopilotConfig_t *config);
+void resetAltitudeControl(void);
 
-static float throttleOut = 0.0f;
+void altitudeControl(float targetAltitudeCm, float taskIntervalS, float verticalVelocity, float targetAltitudeStep);
 
-void autolaunchInit(const autolaunchConfig_t *config)
-{
-    float newThrottle = scaleRangef(1000, MAX(rxConfig()->mincheck, PWM_RANGE_MIN), PWM_RANGE_MAX, 0.0f, 1.0f);
-
-    throttleOut = constrainf(newThrottle, 0.0f, 1.0f);
-    throttleOut = config->idleThrottle;
-}
-
-float getAutolaunchThrottle(void)
-{
-    return throttleOut;
-}
+bool isBelowLandingAltitude(void);
+const pidCoefficient_t *getAltitudePidCoeffs(void);
+float getAutopilotThrottle(void);
